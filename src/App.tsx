@@ -1,14 +1,25 @@
-import { useReducer, useRef, useState, type Key } from 'react'
+import { useEffect, useReducer, useRef, useState, type Key } from 'react'
 import { CreateTask } from './components/CreateTask'
 import { Form } from './components/Form'
 import { NotTask } from './components/NotTask'
 
 export function App() {
   const [inputValue, setInputValue] = useState('')
-  const [tasks, dispatch] = useReducer(reducer, [])
-  const inputRef = useRef<HTMLInputElement>(null) // luta grande
+  const [tasks, dispatch] = useReducer(reducer, loadTasksFromLocalStorage())
+  const inputRef = useRef<HTMLInputElement>(null)
 
-  function reducer(state: any[], action: { type: any; payload: any }) {
+  useEffect(() => {
+    saveTasksToLocalStorage(tasks)
+  }, [tasks])
+
+  type Task = {
+    id: number
+    value: string
+    isCompleted: boolean
+  }
+
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  function reducer(state: Task[], action: { type: any; payload: any }) {
     switch (action.type) {
       case 'add-task': {
         return [
@@ -22,7 +33,7 @@ export function App() {
       }
 
       case 'delete-task': {
-        return state.filter((task: { id: Key }) => task.id !== action.payload)
+        return state.filter((task) => task.id !== action.payload)
       }
 
       default: {
@@ -43,8 +54,6 @@ export function App() {
       setInputValue('')
       inputRef.current?.focus()
     }
-
-    console.log(inputValue)
   }
 
   const deleteTask = (taskId: Key | undefined | number) => {
@@ -52,6 +61,15 @@ export function App() {
       type: 'delete-task',
       payload: taskId,
     })
+  }
+
+  function loadTasksFromLocalStorage() {
+    const savedTasks = localStorage.getItem('tasks')
+    return savedTasks ? JSON.parse(savedTasks) : []
+  }
+
+  function saveTasksToLocalStorage(tasks: unknown[]) {
+    localStorage.setItem('tasks', JSON.stringify(tasks))
   }
 
   return (
@@ -62,12 +80,12 @@ export function App() {
         setInputValue={setInputValue}
         inputRef={inputRef}
       />
-      {!tasks ||
-        (tasks.every((task: { isCompleted: boolean }) => task.isCompleted) && (
-          <NotTask />
-        ))}
+      {!tasks.length ||
+      tasks.every((task: { isCompleted: boolean }) => task.isCompleted) ? (
+        <NotTask />
+      ) : null}
 
-      {tasks && (
+      {tasks.length > 0 && (
         <ol className="taskContainer">
           {tasks.map((task: { id: Key | undefined }) => (
             <CreateTask key={task.id} task={task} deleteTask={deleteTask} />

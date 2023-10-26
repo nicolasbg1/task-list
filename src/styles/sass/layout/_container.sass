@@ -3,27 +3,35 @@
 .container
     border: 2px solid colors.$container-border
     border-radius: 20px
-    min-width: 340px
-    width: 400px
-    min-height: 350px
+    min-width: 20rem
+    width: 25rem
+    min-height: 20rem
     height: auto
     padding: 1rem
     color: colors.$font-color
 
-    h1
-        margin-left: 0.5rem
-        padding: 0.3rem
+h1
+    margin-left: 0.5rem
+    padding: 0.3rem
 
-    .form
-        display: flex
-        justify-content: space-between
-        height: 40px
-        align-items: center
-        padding: 0.3rem
+.form
+    display: flex
+    justify-content: space-between
+    height: 4rem
+    align-items: center
+    padding: 0.3rem
 
-        input
-            width: 72%
-            height: 28px
-            border-radius: 5px
-            border: none
-            text-align: center
+    input
+        width: 72%
+        height: 2rem
+        border-radius: 5px
+        border: none
+        color: colors.$font-color
+        text-align: center
+        background: transparent
+        border-bottom: 3px solid colors.$border-input
+
+        &:focus
+            outline: none
+            border-bottom: 3px solid colors.$border-input-focus
+
