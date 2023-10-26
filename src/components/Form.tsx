@@ -24,7 +24,7 @@ export function Form({
           ref={inputRef}
         />
         <button type="submit" className="btn-add">
-          Add
+          adicionar
         </button>
       </form>
     </div>

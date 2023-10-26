@@ -2,6 +2,7 @@ import { useEffect, useReducer, useRef, useState, type Key } from 'react'
 import { CreateTask } from './components/CreateTask'
 import { Form } from './components/Form'
 import { NotTask } from './components/NotTask'
+// import { Footer } from './components/Footer'
 
 export function App() {
   const [inputValue, setInputValue] = useState('')
@@ -73,25 +74,27 @@ export function App() {
   }
 
   return (
-    <section className="container">
-      <Form
-        handleSubmitForm={handleSubmitForm}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        inputRef={inputRef}
-      />
-      {!tasks.length ||
-      tasks.every((task: { isCompleted: boolean }) => task.isCompleted) ? (
-        <NotTask />
-      ) : null}
+    <div className="centraliza">
+      <section className="container">
+        <Form
+          handleSubmitForm={handleSubmitForm}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          inputRef={inputRef}
+        />
+        {!tasks.length ||
+        tasks.every((task: { isCompleted: boolean }) => task.isCompleted) ? (
+          <NotTask />
+        ) : null}
 
-      {tasks.length > 0 && (
-        <ol className="taskContainer">
-          {tasks.map((task: { id: Key | undefined }) => (
-            <CreateTask key={task.id} task={task} deleteTask={deleteTask} />
-          ))}
-        </ol>
-      )}
-    </section>
+        {tasks.length > 0 && (
+          <ol className="taskContainer">
+            {tasks.map((task: { id: Key | undefined }) => (
+              <CreateTask key={task.id} task={task} deleteTask={deleteTask} />
+            ))}
+          </ol>
+        )}
+      </section>
+    </div>
   )
 }
