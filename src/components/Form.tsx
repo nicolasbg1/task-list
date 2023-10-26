@@ -1,35 +1,32 @@
 import React from 'react'
-import { NotTask } from './NotTask'
 
 type FormProps = {
   handleSubmitForm: (e: { preventDefault: () => void }) => void
-  tasks: string
-  setTask: (newTask: string) => void
+  inputValue: string
+  setInputValue: (newTask: string) => void
   inputRef: React.RefObject<HTMLInputElement> // revisar
 }
-
 export function Form({
   handleSubmitForm,
-  tasks,
-  setTask,
+  inputValue,
+  setInputValue,
   inputRef,
 }: FormProps) {
   return (
-    <div className="container">
+    <div>
       <h1>Lista de Tarefas</h1>
       <form onSubmit={handleSubmitForm} className="form">
         <input
           type="text"
-          value={tasks}
+          value={inputValue}
           placeholder="Digite sua tarefa"
-          onChange={(e) => setTask(e.target.value)}
+          onChange={(e) => setInputValue(e.target.value)}
           ref={inputRef}
         />
         <button type="submit" className="btn-add">
           Add
         </button>
       </form>
-      <NotTask />
     </div>
   )
 }
