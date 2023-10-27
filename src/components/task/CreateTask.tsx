@@ -1,11 +1,11 @@
 import { Key } from 'react'
 import { FaTrash } from 'react-icons/fa6'
 
-type DeleteTask = (taskId: Key | undefined) => void | Error
+type DeleteTask = (taskId: Key) => void | Error
 
 interface CreateTaskProps {
   task: {
-    id: Key | undefined
+    id: Key
     value?: string
   }
   deleteTask: DeleteTask

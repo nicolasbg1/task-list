@@ -1,7 +1,9 @@
 // export function Footer() {
 //   return (
-//     <footer>
-//       <p>Nicolas Braga &copy;2023</p>
+//     <footer className="footer">
+//       <div className="footer-container">
+//         <p>&copy; 2023 Nicolas</p>
+//       </div>
 //     </footer>
 //   )
 // }

@@ -1,7 +1,15 @@
 import { useEffect, useReducer, useRef, useState, type Key } from 'react'
-import { CreateTask } from './components/CreateTask'
+
+import { reducer } from './services/formService'
+import {
+  loadTasksFromLocalStorage,
+  saveTasksToLocalStorage,
+} from './services/taskService'
+
+import { Footer } from './components/Footer'
 import { Form } from './components/Form'
-import { NotTask } from './components/NotTask'
+import { CreateTask } from './components/task/CreateTask'
+import { NotTask } from './components/task/NotTask'
 // import { Footer } from './components/Footer'
 
 export function App() {
@@ -9,43 +17,8 @@ export function App() {
   const [tasks, dispatch] = useReducer(reducer, loadTasksFromLocalStorage())
   const inputRef = useRef<HTMLInputElement>(null)
 
-  useEffect(() => {
-    saveTasksToLocalStorage(tasks)
-  }, [tasks])
-
-  type Task = {
-    id: number
-    value: string
-    isCompleted: boolean
-  }
-
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  function reducer(state: Task[], action: { type: any; payload: any }) {
-    switch (action.type) {
-      case 'add-task': {
-        return [
-          ...state,
-          {
-            id: Date.now(),
-            value: action.payload,
-            isCompleted: false,
-          },
-        ]
-      }
-
-      case 'delete-task': {
-        return state.filter((task) => task.id !== action.payload)
-      }
-
-      default: {
-        return state
-      }
-    }
-  }
-
   const handleSubmitForm = (e: { preventDefault: () => void }) => {
     e.preventDefault()
-
     if (inputValue) {
       dispatch({
         type: 'add-task',
@@ -57,24 +30,19 @@ export function App() {
     }
   }
 
-  const deleteTask = (taskId: Key | undefined | number) => {
+  useEffect(() => {
+    saveTasksToLocalStorage(tasks)
+  }, [tasks])
+
+  const deleteTask = (taskId: Key | undefined) => {
     dispatch({
       type: 'delete-task',
       payload: taskId,
     })
   }
 
-  function loadTasksFromLocalStorage() {
-    const savedTasks = localStorage.getItem('tasks')
-    return savedTasks ? JSON.parse(savedTasks) : []
-  }
-
-  function saveTasksToLocalStorage(tasks: unknown[]) {
-    localStorage.setItem('tasks', JSON.stringify(tasks))
-  }
-
   return (
-    <div className="centraliza">
+    <>
       <section className="container">
         <Form
           handleSubmitForm={handleSubmitForm}
@@ -82,19 +50,18 @@ export function App() {
           setInputValue={setInputValue}
           inputRef={inputRef}
         />
-        {!tasks.length ||
-        tasks.every((task: { isCompleted: boolean }) => task.isCompleted) ? (
-          <NotTask />
-        ) : null}
+        {tasks.length === 0 ? <NotTask /> : null}
 
         {tasks.length > 0 && (
           <ol className="taskContainer">
-            {tasks.map((task: { id: Key | undefined }) => (
+            {tasks.map((task: { id: Key }) => (
               <CreateTask key={task.id} task={task} deleteTask={deleteTask} />
             ))}
           </ol>
         )}
       </section>
-    </div>
+
+      {/* <Footer /> */}
+    </>
   )
 }
