@@ -6,11 +6,10 @@ import {
   saveTasksToLocalStorage,
 } from './services/taskService'
 
-import { Footer } from './components/Footer'
+// import { Footer } from './components/Footer'
 import { Form } from './components/Form'
 import { CreateTask } from './components/task/CreateTask'
 import { NotTask } from './components/task/NotTask'
-// import { Footer } from './components/Footer'
 
 export function App() {
   const [inputValue, setInputValue] = useState('')
