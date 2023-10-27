@@ -9,7 +9,7 @@ import {
 // import { Footer } from './components/Footer'
 import { Form } from './components/Form'
 import { CreateTask } from './components/task/CreateTask'
-import { NotTask } from './components/task/NotTask'
+import { NotTask } from './components/task/NoTask'
 
 export function App() {
   const [inputValue, setInputValue] = useState('')
@@ -41,26 +41,22 @@ export function App() {
   }
 
   return (
-    <>
-      <section className="container">
-        <Form
-          handleSubmitForm={handleSubmitForm}
-          inputValue={inputValue}
-          setInputValue={setInputValue}
-          inputRef={inputRef}
-        />
-        {tasks.length === 0 ? <NotTask /> : null}
+    <section className="container">
+      <Form
+        handleSubmitForm={handleSubmitForm}
+        inputValue={inputValue}
+        setInputValue={setInputValue}
+        inputRef={inputRef}
+      />
+      {tasks.length === 0 ? <NotTask /> : null}
 
-        {tasks.length > 0 && (
-          <ol className="taskContainer">
-            {tasks.map((task: { id: Key }) => (
-              <CreateTask key={task.id} task={task} deleteTask={deleteTask} />
-            ))}
-          </ol>
-        )}
-      </section>
-
-      {/* <Footer /> */}
-    </>
+      {tasks.length > 0 && (
+        <ol className="taskContainer">
+          {tasks.map((task: { id: Key }) => (
+            <CreateTask key={task.id} task={task} deleteTask={deleteTask} />
+          ))}
+        </ol>
+      )}
+    </section>
   )
 }

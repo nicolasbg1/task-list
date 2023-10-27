@@ -3,7 +3,9 @@ export function NotTask() {
   return (
     <div className="not-task">
       <p>Sem atividades no momento</p>
-      <FaFaceFrown />
+      <span className="icon">
+        <FaFaceFrown />
+      </span>
     </div>
   )
 }

@@ -23,7 +23,7 @@ export function Form({
           onChange={(e) => setInputValue(e.target.value)}
           ref={inputRef}
         />
-        <button type="submit" className="btn-add">
+        <button type="submit" className="btn">
           adicionar
         </button>
       </form>

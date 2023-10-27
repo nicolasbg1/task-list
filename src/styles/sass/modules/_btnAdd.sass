@@ -1,16 +1,31 @@
 @use '../base/_colors'
 
-.btn-add
-    width: 28%
-    height: 28px
-    border: none
-    border-radius: 5px
-    background-color: colors.$btn-add
-    color: colors.$font-color
-    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+.btn
+    display: inline-block
+    font-size: 16px
+    width: 100px
+    color: white
+    border: 2px solid rgb(68, 219, 136)
     cursor: pointer
+    position: relative
+    overflow: hidden
+    background-color: transparent
+    text-decoration: none
+    z-index: 1
+    border-radius: 5px
+    padding: 0.4rem
 
-    &:hover
-        background: transparent
-        border: 1px solid colors.$btn-add
-  
+    &::before
+        content: ""
+        position: absolute
+        left: 0
+        top: 0
+        width: 100%
+        height: 100%
+        background-color: rgb(51, 223, 129)
+        transform: translateX(-100%)
+        transition: all .3s
+        z-index: -1
+
+.btn:hover::before
+    transform: translateX(0)
