@@ -1,20 +1,21 @@
 @use '../base/_colors'
+@use '../modules/_mixins'
 
 .container
     border: 2px solid colors.$container-border
-    max-width: 380px
-    width: 420px
-    margin-top: 2rem
-    position: relative
-    width: 340px
-    overflow: hidden
-    color: white
     border-radius: 20px
     padding: 1.3rem
     background-color: colors.$bg-container
     min-height: 400px
     height: auto
     color: colors.$font-color
+    @include mixins.desktop()
+        min-height: 450px
+        width: 430px
+        margin-top: 4rem
+    @include mixins.mobile()
+       width: 399px
+       min-height: 500px
 
 h1
     margin-left: 0.5rem

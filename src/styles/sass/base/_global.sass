@@ -1,14 +1,13 @@
 @use './_colors'
+@use '../modules/_mixins'
 
 body
-    // height: 100vh
-    // width: 100vw
-    // background-attachment: fixed
-    // background-position: center
-    // background-repeat: no-repeat
-    // background-image: url(src/assets/banner.jpg)
-    // overflow-x: hidden
     font-family: 'Lato', sans-serif
     background-color: colors.$body
-    display: flex
-    justify-content: center
+    @include mixins.mobile()
+        display: flex
+        justify-content: center
+
+    @include mixins.desktop()
+        display: flex
+        justify-content: center

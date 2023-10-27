@@ -41,22 +41,24 @@ export function App() {
   }
 
   return (
-    <section className="container">
-      <Form
-        handleSubmitForm={handleSubmitForm}
-        inputValue={inputValue}
-        setInputValue={setInputValue}
-        inputRef={inputRef}
-      />
-      {tasks.length === 0 ? <NotTask /> : null}
+    <>
+      <section className="container">
+        <Form
+          handleSubmitForm={handleSubmitForm}
+          inputValue={inputValue}
+          setInputValue={setInputValue}
+          inputRef={inputRef}
+        />
+        {tasks.length === 0 ? <NotTask /> : null}
 
-      {tasks.length > 0 && (
-        <ol className="taskContainer">
-          {tasks.map((task: { id: Key }) => (
-            <CreateTask key={task.id} task={task} deleteTask={deleteTask} />
-          ))}
-        </ol>
-      )}
-    </section>
+        {tasks.length > 0 && (
+          <ol className="taskContainer">
+            {tasks.map((task: { id: Key }) => (
+              <CreateTask key={task.id} task={task} deleteTask={deleteTask} />
+            ))}
+          </ol>
+        )}
+      </section>
+    </>
   )
 }
