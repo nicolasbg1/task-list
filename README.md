@@ -21,3 +21,7 @@ Este é um projeto de uma lista de tarefas desenvolvido em React, utilizando o t
 ## Clone meu repositório 
 
 - git clone https://github.com/nicbrz/task-list
+
+## Imagem do projeto
+![projeto](https://github.com/nicbrz/task-list/assets/121886520/87da9507-4023-4cb9-84da-f56c739f1e69)
+
