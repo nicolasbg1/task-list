@@ -9,7 +9,7 @@ import {
 // import { Footer } from './components/Footer'
 import { Form } from './components/Form'
 import { CreateTask } from './components/task/CreateTask'
-import { NotTask } from './components/task/NoTask'
+import { NoTask } from './components/task/NoTask'
 
 export function App() {
   const [inputValue, setInputValue] = useState('')
@@ -41,7 +41,7 @@ export function App() {
   }
 
   return (
-    <>
+    <main className="main-container">
       <section className="container">
         <Form
           handleSubmitForm={handleSubmitForm}
@@ -49,7 +49,7 @@ export function App() {
           setInputValue={setInputValue}
           inputRef={inputRef}
         />
-        {tasks.length === 0 ? <NotTask /> : null}
+        {tasks.length === 0 ? <NoTask /> : null}
 
         {tasks.length > 0 && (
           <ol className="taskContainer">
@@ -59,6 +59,6 @@ export function App() {
           </ol>
         )}
       </section>
-    </>
+    </main>
   )
 }

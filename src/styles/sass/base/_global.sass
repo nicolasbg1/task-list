@@ -1,13 +1,17 @@
 @use './_colors'
 @use '../modules/_mixins'
 
+*
+    margin: 0
+    box-sizing: border-box
+    padding: 0
+
 body
     font-family: 'Lato', sans-serif
     background-color: colors.$body
-    @include mixins.mobile()
-        display: flex
-        justify-content: center
-
+    margin: 20px
+    display: flex
+    justify-content: center
     @include mixins.desktop()
-        display: flex
-        justify-content: center
+        height: 100vh
+        align-items: center
