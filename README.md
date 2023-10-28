@@ -1,27 +1,23 @@
-# React + TypeScript + Vite
+# Lista de Tarefas em React com Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Este é um projeto de uma lista de tarefas desenvolvido em React, utilizando o template Vite como base. A aplicação permite adicionar e excluir tarefas, além de salvar as informações no armazenamento local do navegador (localStorage).
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- [React](https://reactjs.org/): Uma biblioteca JavaScript para construir interfaces de usuário.
+- [Vite](https://vitejs.dev/): Um construtor de aplicações web ultra-rápido com suporte a TypeScript.
+- [TypeScript](https://www.typescriptlang.org/): Uma linguagem de programação que adiciona tipagem estática ao JavaScript.
+- [Sass](https://sass-lang.com/): Um pré-processador CSS que simplifica a estilização de componentes.
+- [react-icons](https://react-icons.github.io/react-icons/): Uma biblioteca de ícones para React que facilita a inclusão de ícones em componentes.
 
-## Expanding the ESLint configuration
+## Funcionalidades
 
-If you are developing a production application, we recommend updating the configuration to enable type aware lint rules:
+- Adição de Tarefas: Os usuários podem adicionar tarefas à lista com facilidade, fornecendo uma descrição da tarefa.
 
-- Configure the top-level `parserOptions` property like this:
+- Exclusão de Tarefas: Tarefas concluídas ou indesejadas podem ser removidas da lista de tarefas.
 
-```js
-   parserOptions: {
-    ecmaVersion: 'latest',
-    sourceType: 'module',
-    project: ['./tsconfig.json', './tsconfig.node.json'],
-    tsconfigRootDir: __dirname,
-   },
-```
+- Armazenamento Local: As informações das tarefas são salvas no armazenamento local do navegador, garantindo que as tarefas persistam entre sessões.
 
-- Replace `plugin:@typescript-eslint/recommended` to `plugin:@typescript-eslint/recommended-type-checked` or `plugin:@typescript-eslint/strict-type-checked`
-- Optionally add `plugin:@typescript-eslint/stylistic-type-checked`
-- Install [eslint-plugin-react](https://github.com/jsx-eslint/eslint-plugin-react) and add `plugin:react/recommended` & `plugin:react/jsx-runtime` to the `extends` list
+## Clone meu repositório 
+
+- git clone https://github.com/nicbrz/task-list
