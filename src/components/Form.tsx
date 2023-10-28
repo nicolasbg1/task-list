@@ -22,6 +22,7 @@ export function Form({
           placeholder="Digite sua tarefa"
           onChange={(e) => setInputValue(e.target.value)}
           ref={inputRef}
+          required
         />
         <button type="submit" className="btn">
           adicionar
