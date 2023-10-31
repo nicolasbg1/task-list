@@ -1,4 +1,5 @@
 @use '../base/_colors'
+
 .taskContainer
     padding: 10px
 
@@ -8,13 +9,21 @@
         margin-left: 10px
         border-bottom: 1px solid #ccc
         margin-top: 15px
+        animation: fadeIn 0.5s ease
 
-    .clearTask
-        border: none
-        background-color: transparent
-        font-size: 1.2rem
-        position: relative
-        bottom: 25px
-        left: 90%
-        color: colors.$clear-task
-        cursor: pointer
+@keyframes fadeIn
+    from
+        opacity: 0
+
+    to
+        opacity: 1
+
+.clearTask
+    border: none
+    background-color: transparent
+    font-size: 1.2rem
+    position: relative
+    bottom: 25px
+    left: 90%
+    color: colors.$clear-task
+    cursor: pointer
