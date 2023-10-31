@@ -1,7 +1,7 @@
 import { Key } from 'react'
 import { FaTrash } from 'react-icons/fa6'
 
-type DeleteTask = (taskId: Key) => void | Error  //revisar
+type DeleteTask = (taskId: Key) => void | Error // revisar
 
 interface CreateTaskProps {
   task: {
